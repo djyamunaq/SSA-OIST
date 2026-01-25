@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgillespie_lib.a CMakeFiles/gillespie_lib.dir/src/Composition.cpp.o CMakeFiles/gillespie_lib.dir/src/Participant.cpp.o CMakeFiles/gillespie_lib.dir/src/ReactionChannel.cpp.o CMakeFiles/gillespie_lib.dir/src/Solver.cpp.o CMakeFiles/gillespie_lib.dir/src/Species.cpp.o
+/usr/bin/ranlib libgillespie_lib.a
