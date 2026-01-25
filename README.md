@@ -9,7 +9,7 @@ The project was mainly guided by the paper "Exact Stochastic Simulation of Coupl
 
 * **Visualization**: Integrated plotting support via `matplotlib-cpp` to generate trajectory graphs directly from C++.
 
-* **Automated Documentation**: Fully commented source code compatible with Doxygen for generating API documentation.
+* **Automated Documentation**: Source code compatible with Doxygen for generating API documentation.
 
 ## Project Structure
 * `cpp/include/`: Header files (`.hpp`) and template implementations (`.tpp`).
