@@ -2,6 +2,7 @@
 #include "Participant.hpp"
 #include "Composition.hpp"
 #include "ReactionChannel.hpp"
+#include "Volume.hpp"
 #include "Solver.hpp"
 #include "matplotlibcpp.h"
 #include <typeinfo>
@@ -10,8 +11,11 @@
 namespace plt = matplotlibcpp;
 
 int main() {
+    // Create volumes
+    Volume vol1;
+
     // Create species
-    Species A("A", 1000), B("B", 0), C("C", 0);
+    Species A("A", 10000), B("B", 0), C("C", 0);
 
     // Define reaction channels r1 and r2
     auto r1 = A >> B;
@@ -21,15 +25,21 @@ int main() {
     r1.setC(0.5);
     r2.setC(1.0);
 
+    // Add reaction channels to volume
+    vol1.addReactionChannel(r1);
+    vol1.addReactionChannel(r2);
+
     // Define solver
-    Gillespie solver({r1, r2});
+    Gillespie solver(vol1);
 
     // Iterate through simulation
     while (true) {
         auto a0 = solver.step();
 
-        // Stop if propensity goes to 0
-        if(a0 <= 0) break;
+        // Stop if reaction propensity is under 0
+        if(a0 <= 0) {
+            break;
+        } 
     }
 
     // Print history (species' quantities over time)

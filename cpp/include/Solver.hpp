@@ -6,7 +6,13 @@
 #include <random>
 #include <map>
 #include <string>
-#include "ReactionChannel.hpp"
+#include "Volume.hpp"
+
+// /**
+//  * Forward Declarations
+//  */
+// class Volume;
+// class Volume;
 
 /**
  * \brief Object to store a point in the reaction trajectory
@@ -23,7 +29,7 @@ struct TrajectoryPoint
 class Gillespie
 {
 private:
-    std::vector<ReactionChannel> channels;       /**< Reaction channels in the system */
+    Volume volume;                               /**< Volume in the system */
     std::vector<Species *> trackedSpecies;       /**< Vector of species being tracked */
     double currentTime;                          /**< Current simulation time  */
     std::vector<TrajectoryPoint> history;        /**< Trajectory history => log of species counts over time */
@@ -38,9 +44,9 @@ private:
 public:
     /**
      * Constructor for Gillespie class
-     * @param channels Vector of ReactionChannel objects
+     * @param volume Volume object
      */
-    Gillespie(const std::vector<ReactionChannel> &channels);
+    Gillespie(const Volume &volume);
 
     /**
      * Step in simulation
