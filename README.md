@@ -4,6 +4,9 @@ A simple implementation of the Gillespie SSA algorithm in C++ (and additional co
 
 The project was mainly guided by the paper "Exact Stochastic Simulation of Coupled Chemical Reactions" (Gillespie, 1977), and in a minor way by the project "Stochastic Kinectics" (https://ndcbe.github.io/data-and-computing/notebooks/contrib/Stochastic-Kinetics.html) from the coursework of a Chemical and Biomolecular Engineering course from the University of Notre Dame.
 
+The following diagram explains the basic elements and their relations:
+![Diagram of elements in simulation](./figs/diag.png)
+
 ## Features
 * **Domain Specific Language DSL**: Define reactions using natural chemical syntax (e.g., `2*A + B >> C`).
 
