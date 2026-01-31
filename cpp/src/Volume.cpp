@@ -1,5 +1,5 @@
-#include "Volume.hpp"          // Assuming Volume is currently in this header
-#include "ReactionChannel.hpp" // Assuming Volume is currently in this header
+#include "Volume.hpp"          
+#include "ReactionChannel.hpp" 
 #include <cstdio>
 
 Volume::Volume(const std::vector<ReactionChannel> &reactionChannelVector)
