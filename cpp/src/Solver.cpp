@@ -6,7 +6,7 @@
 #include <set>
 
 Gillespie::Gillespie(const Volume &volume, double simTime)
-    : volume(volume), currentTime(0.0), dist(0.0, 1.0)
+    : volume(volume), simTime(simTime), currentTime(0.0), dist(0.0, 1.0)
 {
     std::random_device rd;
     rng.seed(rd());
@@ -94,7 +94,7 @@ bool Gillespie::step()
     // Print volume details
     // if (count++ % 100)
     // {
-    //     printf("%lf\n", a0);
+    //     printf("Time: %lf/%lf\n", currentTime, simTime);
     //     volume.printVolume();
     // }
 

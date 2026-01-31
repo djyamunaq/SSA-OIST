@@ -31,6 +31,7 @@ int main() {
 
     // Define solver
     Gillespie solver(vol1);
+    solver.setSimulationTime(20.0);
 
     // Iterate through simulation
     auto done = solver.step();
