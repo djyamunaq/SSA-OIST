@@ -3,7 +3,7 @@ project(ssa_sim CXX)
 
 find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
 
-add_executable(ssa_sim apps/main.cpp src/Species.cpp src/Solver.cpp src/Composition.cpp src/ReactionChannel.cpp src/Participant.cpp src/Volume.cpp)
+add_executable(ssa_sim apps/main.cpp src/Utils.cpp src/Species.cpp src/Solver.cpp src/Composition.cpp src/ReactionChannel.cpp src/Participant.cpp src/Volume.cpp)
 
 target_include_directories(ssa_sim PRIVATE 
     include 
