@@ -20,8 +20,6 @@ void Gillespie::discoverSpecies()
     // Set to store unique species references
     std::set<Species *> speciesSet;
 
-    // Iterate over volumes
-
     // Get volume channels
     auto channels = volume.getChannels();
 
@@ -64,10 +62,10 @@ void Gillespie::recordHistory()
 int count = 0;
 double Gillespie::step()
 {
-
-    if(count++ % 100) {
-        volume.printVolume();
-    }
+    // Print volume details
+    // if(count++ % 100) {
+    //     volume.printVolume();
+    // }
 
     // Total propensity
     double a0 = 0.0;
