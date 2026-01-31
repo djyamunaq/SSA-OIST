@@ -33,13 +33,9 @@ int main() {
     Gillespie solver(vol1);
 
     // Iterate through simulation
-    while (true) {
-        auto a0 = solver.step();
-
-        // Stop if reaction propensity is under 0
-        if(a0 <= 0) {
-            break;
-        } 
+    auto done = solver.step();
+    while (!done) {
+        done = solver.step();
     }
 
     // Print history (species' quantities over time)

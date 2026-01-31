@@ -32,6 +32,7 @@ private:
     Volume volume;                               /**< Volume in the system */
     std::vector<Species *> trackedSpecies;       /**< Vector of species being tracked */
     double currentTime;                          /**< Current simulation time  */
+    double simTime{-1};                          /**< Total simulation time  */
     std::vector<TrajectoryPoint> history;        /**< Trajectory history => log of species counts over time */
     std::mt19937 rng;                            /**< Random number generator */
     std::uniform_real_distribution<double> dist; /**< Uniform distribution (0, 1) */
@@ -44,15 +45,22 @@ private:
 public:
     /**
      * Constructor for Gillespie class
-     * @param volume Volume object
+     * \param volume Volume object
+     * \param simTime Simulation time
+     */
+    Gillespie(const Volume &volume, double simTime);
+
+    /**
+     * Constructor for Gillespie class
+     * \param volume Volume object
      */
     Gillespie(const Volume &volume);
 
     /**
      * Step in simulation
-     * @return Total propensity a0
+     * \return boolean: is simulation done
      */
-    double step();
+    bool step();
 
     /**
      * \brief Record a point in reaction trajectory to history
@@ -70,6 +78,18 @@ public:
      * \return Current time
      */
     double getCurrentTime() const { return currentTime; }
+
+    /**
+     * \brief Get total simulation time
+     * \return Current time
+     */
+    double getSimulationTime();
+
+    /**
+     * \brief Set total simulation time
+     * \return Current time
+     */
+    void setSimulationTime(double simTime);
 };
 
 #include "Templates.tpp"

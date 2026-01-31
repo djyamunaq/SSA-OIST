@@ -5,6 +5,16 @@
 #include <cmath>
 #include <set>
 
+Gillespie::Gillespie(const Volume &volume, double simTime)
+    : volume(volume), currentTime(0.0), dist(0.0, 1.0)
+{
+    std::random_device rd;
+    rng.seed(rd());
+
+    discoverSpecies();
+    recordHistory();
+}
+
 Gillespie::Gillespie(const Volume &volume)
     : volume(volume), currentTime(0.0), dist(0.0, 1.0)
 {
@@ -59,14 +69,9 @@ void Gillespie::recordHistory()
     history.push_back(point);
 }
 
-int count = 0;
-double Gillespie::step()
+// int count = 0;
+bool Gillespie::step()
 {
-    // Print volume details
-    // if(count++ % 100) {
-    //     volume.printVolume();
-    // }
-
     // Total propensity
     double a0 = 0.0;
 
@@ -86,8 +91,18 @@ double Gillespie::step()
         a0 += a;
     }
 
+    // Print volume details
+    // if (count++ % 100)
+    // {
+    //     printf("%lf\n", a0);
+    //     volume.printVolume();
+    // }
+
+    // Check if propensity is 0 => no reaction
     if (a0 <= 0)
-        return 0.0;
+    {
+        return true;
+    }
 
     // Generate random numbers
     double r1 = dist(rng);
@@ -96,6 +111,12 @@ double Gillespie::step()
     // Compute Tau (time to next reaction)
     double tau = -std::log(r1) / a0;
     currentTime += tau;
+
+    // Check if simulation time is up
+    if (simTime > 0 && currentTime > simTime)
+    {
+        return true;
+    }
 
     // Select reaction using r2
     double threshold = r2 * a0;
@@ -114,5 +135,15 @@ double Gillespie::step()
     // Record current state
     recordHistory();
 
-    return a0;
+    return false;
+}
+
+double Gillespie::getSimulationTime()
+{
+    return simTime;
+}
+
+void Gillespie::setSimulationTime(double simTime)
+{
+    this->simTime = simTime;
 }
