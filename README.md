@@ -47,3 +47,4 @@ Then open the index.html file from $PROJECT_ROOT/html/ folder using the browser.
 3. Implement a timer input in the solver to limit simulation time.
 4. Implement an analogous to the Java's BigInteger for the combinatorial factor h => currently it is done using an heuristic that avoids big multiplications, but it might crash for larger quantities (e.g., a pretty reasonable amount 1e7 molecules and stoichiometry of 2 generates 1e7 C 2 combinations).
 5. Implement input files to make simulations more dynamic.
+6. Add a diagram of classes to explain better the relations of the components in the simulation.
